@@ -17,4 +17,16 @@ class ProductsState {
     this.products = const [],
     this.exception,
   });
+
+  ProductsState copyWith({
+    ProductsStatus? status,
+    List<Product>? products,
+    AppException? exception,
+  }) {
+    return ProductsState(
+      status: status ?? this.status,
+      products: products ?? this.products,
+      exception: exception ?? this.exception,
+    );
+  }
 }

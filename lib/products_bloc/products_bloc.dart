@@ -12,15 +12,15 @@ class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
   ProductsBloc() : super(const ProductsState()) {
     on<GetAllProducts>((event, emit) async {
       try {
-        emit(const ProductsState(status: ProductsStatus.loading));
+        emit(state.copyWith(status: ProductsStatus.loading));
         final products = await _getProducts();
-        emit(ProductsState(
-          products: products,
+        emit(state.copyWith(
           status: ProductsStatus.success,
+          products: products,
         ));
       } catch (error) {
         final appException = AppException.from(error);
-        emit(ProductsState(
+        emit(state.copyWith(
           status: ProductsStatus.error,
           exception: appException,
         ));

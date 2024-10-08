@@ -27,11 +27,18 @@ class _ProductsScreenState extends State<ProductsScreen> {
       ),
       body: BlocBuilder<ProductsBloc, ProductsState>(
         builder: (context, state) {
-          return switch (state.status) {
-            ProductsStatus.loading || ProductsStatus.initial => _buildLoading(context),
-            ProductsStatus.error => _buildError(context, state.exception),
-            ProductsStatus.success => _buildSuccess(context, state.products),
-          };
+          return Column(
+            children: [
+              Text('${state.status}'),
+              Expanded(
+                child: switch (state.status) {
+                  ProductsStatus.loading || ProductsStatus.initial => _buildLoading(context),
+                  ProductsStatus.error => _buildError(context, state.exception),
+                  ProductsStatus.success => _buildSuccess(context, state.products),
+                },
+              ),
+            ],
+          );
         },
       ),
     );

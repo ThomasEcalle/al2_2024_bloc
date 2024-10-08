@@ -1,5 +1,7 @@
+import 'package:al2_2024_bloc/products_bloc/products_bloc.dart';
 import 'package:al2_2024_bloc/products_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,8 +12,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: ProductsScreen(),
+    return BlocProvider(
+      create: (context) => ProductsBloc(),
+      child: const MaterialApp(
+        home: ProductsScreen(),
+      ),
     );
   }
 }

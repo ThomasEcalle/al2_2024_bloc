@@ -34,7 +34,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
             BlocBuilder<CartBloc, CartState>(
               buildWhen: (previous, current) {
                 final addingOrRemovingCart = current.status == CartStatus.addingCart || current.status == CartStatus.removingCart;
-                return addingOrRemovingCart;
+                return !addingOrRemovingCart;
               },
               builder: (context, state) {
                 return CartIcon(

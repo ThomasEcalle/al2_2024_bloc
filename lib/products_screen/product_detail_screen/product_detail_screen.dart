@@ -55,7 +55,9 @@ class ProductDetailScreen extends StatelessWidget {
   }
 
   void _onAddToShoppingCart(BuildContext context) {
-    BlocProvider.of<CartBloc>(context).add(AddProduct(product));
+    //BlocProvider.of<CartBloc>(context).add(AddProduct(product));
+    context.read<CartBloc>().add(AddProduct(product));
+    //'machin'.isToto();
   }
 
   void _onRemoveFromShoppingCart(BuildContext context) {

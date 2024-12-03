@@ -7,6 +7,8 @@ import 'cart_screen/cart_screen.dart';
 import 'products_screen/product_detail_screen/product_detail_screen.dart';
 import 'products_screen/products_bloc/products_bloc.dart';
 import 'shared/models/product.dart';
+import 'shared/services/local_products_data_source/fake_local_products_data_source.dart';
+import 'shared/services/products_repository.dart';
 import 'shared/services/remote_products_data_source/api_products_data_source.dart';
 import 'shared/services/remote_products_data_source/fake_remote_products_data_source.dart';
 
@@ -23,7 +25,10 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider(
           create: (context) => ProductsBloc(
-            remoteProductsDataSource: FakeRemoteProductsDataSource(),
+            productsRepository: ProductsRepository(
+              remoteProductsDataSource: ApiProductsDataSource(),
+              localDataSource: FakeLocalProductsDataSource(),
+            ),
           ),
         ),
         BlocProvider(

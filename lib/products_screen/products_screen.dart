@@ -72,8 +72,8 @@ class _ProductsScreenState extends State<ProductsScreen> {
   }
 
   Widget _buildError(BuildContext context, AppException? exception) {
-    return Center(
-      child: Text('Error: $exception'),
+    return const Center(
+      child: Text('Oups, une erreur est survenue'),
     );
   }
 

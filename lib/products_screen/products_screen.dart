@@ -77,7 +77,14 @@ class _ProductsScreenState extends State<ProductsScreen> {
     );
   }
 
+  Widget _buildEmpty(BuildContext context) {
+    return const Center(
+      child: Text('Oups, aucun produit'),
+    );
+  }
+
   Widget _buildSuccess(BuildContext context, List<Product> products) {
+    if(products.isEmpty) return _buildEmpty(context);
     return RefreshIndicator(
       onRefresh: () async {
         _getAllProducts();
